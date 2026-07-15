@@ -1,8 +1,5 @@
 # Raw Data
 
-Place Kaggle Student Performance dataset files here:
+[student-mat.csv](https://github.com/user-attachments/files/30044576/student-mat.csv)
 
-- `student-mat.csv`
-- `student-por.csv`
-
-These CSV files are ignored by Git to avoid committing dataset files directly.
+[student-por.csv](https://github.com/user-attachments/files/30044578/student-por.csv)
