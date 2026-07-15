@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and generated artifacts
+data/raw/*.csv
+data/processed/*.csv
+models/*.pkl
+outputs/figures/*.png
+outputs/screenshots/*.png
+reports/*.csv
+reports/*.txt
+reports/*.json
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
