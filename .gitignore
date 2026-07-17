@@ -12,11 +12,12 @@ env/
 .ipynb_checkpoints/
 
 # Data and generated artifacts
-data/raw/*.csv
-data/processed/*.csv
-models/*.pkl
-outputs/figures/*.png
-outputs/screenshots/*.png
+backend/data/raw/*.csv
+backend/data/processed/*.csv
+backend/models/*.pkl
+backend/outputs/figures/*.png
+screenshots/*.png
+sample_data/*.csv
 reports/*.csv
 reports/*.txt
 reports/*.json

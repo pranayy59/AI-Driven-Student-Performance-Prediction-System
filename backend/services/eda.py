@@ -12,7 +12,7 @@ from sklearn.metrics import (
 )
 from sklearn.pipeline import Pipeline
 
-from src.config import FIGURES_DIR, GRADE_COLUMN, TARGET_COLUMN
+from backend.config.config import FIGURES_DIR, GRADE_COLUMN, TARGET_COLUMN
 
 
 PLOT_STYLE = "whitegrid"

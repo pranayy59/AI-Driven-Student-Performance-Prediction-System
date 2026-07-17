@@ -53,7 +53,7 @@ Expected files:
 Place one or both files in:
 
 ```text
-data/raw/
+backend/data/raw/
 ```
 
 CSV files are intentionally ignored by Git to avoid committing raw dataset files.
@@ -78,29 +78,35 @@ flowchart TD
 
 ```text
 AI-Driven Student Performance Prediction System/
-|-- app/
+|-- backend/
+|   |-- app.py
+|   |-- config/
+|   |   `-- config.py
+|   |-- data/
+|   |   |-- processed/
+|   |   `-- raw/
+|   |       `-- README.md
+|   |-- models/
+|   |   |-- train.py
+|   |   `-- README.md
+|   |-- outputs/
+|   |   |-- figures/
+|   |   `-- README.md
+|   `-- services/
+|       |-- data_preprocessing.py
+|       |-- eda.py
+|       `-- predict.py
+|-- frontend/
+|   |-- assets/
+|   |-- pages/
 |   `-- streamlit_app.py
-|-- data/
-|   |-- processed/
-|   `-- raw/
-|       `-- README.md
-|-- models/
-|   `-- README.md
 |-- notebooks/
 |   `-- student_performance_workflow.ipynb
-|-- outputs/
-|   |-- figures/
-|   `-- README.md
 |-- reports/
 |   |-- Project_Report.md
 |   `-- README.md
-|-- src/
-|   |-- __init__.py
-|   |-- config.py
-|   |-- data_preprocessing.py
-|   |-- eda.py
-|   |-- predict.py
-|   `-- train.py
+|-- sample_data/
+|-- screenshots/
 |-- .gitignore
 |-- CHANGELOG.md
 |-- CODE_OF_CONDUCT.md
@@ -129,44 +135,52 @@ pip install -r requirements.txt
 
 ### 1. Add Dataset Files
 
-Download the Kaggle dataset and place the files in `data/raw/`:
+Download the Kaggle dataset and place the files in `backend/data/raw/`:
 
 ```text
-data/raw/student-mat.csv
-data/raw/student-por.csv
+backend/data/raw/student-mat.csv
+backend/data/raw/student-por.csv
 ```
 
 ### 2. Train and Evaluate Models
 
 ```bash
-python -m src.train
+python backend/models/train.py
 ```
 
 Generated artifacts:
 
-- `models/best_model.pkl`
-- `models/model_metadata.pkl`
+- `backend/models/best_model.pkl`
+- `backend/models/model_metadata.pkl`
 - `reports/model_comparison.csv`
 - `reports/classification_report.txt`
 - `reports/feature_importance.csv`
-- `outputs/figures/correlation_heatmap.png`
-- `outputs/figures/feature_importance.png`
-- `outputs/figures/confusion_matrix.png`
-- `outputs/figures/roc_curve.png`
-- `outputs/figures/precision_recall_curve.png`
-- `outputs/figures/class_distribution.png`
-- `outputs/figures/model_accuracy_comparison.png`
+- `backend/outputs/figures/correlation_heatmap.png`
+- `backend/outputs/figures/feature_importance.png`
+- `backend/outputs/figures/confusion_matrix.png`
+- `backend/outputs/figures/roc_curve.png`
+- `backend/outputs/figures/precision_recall_curve.png`
+- `backend/outputs/figures/class_distribution.png`
+- `backend/outputs/figures/model_accuracy_comparison.png`
 
 ### 3. Predict from CLI
 
+Use the included sample record:
+
 ```bash
-python -m src.predict --input "{\"subject\":\"mathematics\",\"school\":\"GP\",\"sex\":\"F\",\"age\":17,\"address\":\"U\",\"famsize\":\"GT3\",\"Pstatus\":\"T\",\"Medu\":4,\"Fedu\":4,\"Mjob\":\"teacher\",\"Fjob\":\"services\",\"reason\":\"course\",\"guardian\":\"mother\",\"traveltime\":1,\"studytime\":2,\"failures\":0,\"schoolsup\":\"yes\",\"famsup\":\"no\",\"paid\":\"no\",\"activities\":\"yes\",\"nursery\":\"yes\",\"higher\":\"yes\",\"internet\":\"yes\",\"romantic\":\"no\",\"famrel\":4,\"freetime\":3,\"goout\":3,\"Dalc\":1,\"Walc\":1,\"health\":4,\"absences\":2,\"G1\":15,\"G2\":14}"
+python backend/services/predict.py --file sample_data/sample_student.json
+```
+
+Or pass JSON directly:
+
+```bash
+python backend/services/predict.py --input "{\"subject\":\"mathematics\",\"school\":\"GP\",\"sex\":\"F\",\"age\":17,\"address\":\"U\",\"famsize\":\"GT3\",\"Pstatus\":\"T\",\"Medu\":4,\"Fedu\":4,\"Mjob\":\"teacher\",\"Fjob\":\"services\",\"reason\":\"course\",\"guardian\":\"mother\",\"traveltime\":1,\"studytime\":2,\"failures\":0,\"schoolsup\":\"yes\",\"famsup\":\"no\",\"paid\":\"no\",\"activities\":\"yes\",\"nursery\":\"yes\",\"higher\":\"yes\",\"internet\":\"yes\",\"romantic\":\"no\",\"famrel\":4,\"freetime\":3,\"goout\":3,\"Dalc\":1,\"Walc\":1,\"health\":4,\"absences\":2,\"G1\":15,\"G2\":14}"
 ```
 
 ### 4. Run Streamlit Dashboard
 
 ```bash
-streamlit run app/streamlit_app.py
+streamlit run frontend/streamlit_app.py
 ```
 
 The dashboard includes:
@@ -203,7 +217,7 @@ The training pipeline reports:
 
 ## Screenshots
 
-Add generated screenshots to `outputs/screenshots/` after running the dashboard.
+Add generated screenshots to `screenshots/` after running the dashboard.
 
 Recommended screenshots:
 

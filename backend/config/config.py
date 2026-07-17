@@ -3,16 +3,19 @@
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+BACKEND_DIR = PROJECT_ROOT / "backend"
 
-DATA_DIR = PROJECT_ROOT / "data"
+DATA_DIR = BACKEND_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
-MODELS_DIR = PROJECT_ROOT / "models"
-OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+MODELS_DIR = BACKEND_DIR / "models"
+OUTPUTS_DIR = BACKEND_DIR / "outputs"
 FIGURES_DIR = OUTPUTS_DIR / "figures"
 REPORTS_DIR = PROJECT_ROOT / "reports"
+SCREENSHOTS_DIR = PROJECT_ROOT / "screenshots"
+SAMPLE_DATA_DIR = PROJECT_ROOT / "sample_data"
 
 DATA_FILES = {
     "mathematics": "student-mat.csv",
@@ -34,6 +37,7 @@ def ensure_directories() -> None:
         MODELS_DIR,
         FIGURES_DIR,
         REPORTS_DIR,
-        OUTPUTS_DIR / "screenshots",
+        SCREENSHOTS_DIR,
+        SAMPLE_DATA_DIR,
     ]:
         path.mkdir(parents=True, exist_ok=True)

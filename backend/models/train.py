@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import joblib
@@ -24,7 +25,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
-from src.config import (
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from backend.config.config import (
     MODELS_DIR,
     PROCESSED_DATA_DIR,
     RANDOM_STATE,
@@ -32,14 +37,14 @@ from src.config import (
     TEST_SIZE,
     ensure_directories,
 )
-from src.data_preprocessing import (
+from backend.services.data_preprocessing import (
     build_preprocessor,
     clean_student_data,
     get_feature_names,
     load_student_data,
     split_features_target,
 )
-from src.eda import (
+from backend.services.eda import (
     run_eda,
     save_confusion_matrix,
     save_feature_importance,

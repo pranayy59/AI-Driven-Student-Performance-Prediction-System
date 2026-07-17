@@ -4,13 +4,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
 import joblib
 import pandas as pd
 
-from src.config import MODELS_DIR
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from backend.config.config import MODELS_DIR
 
 
 MODEL_PATH = MODELS_DIR / "best_model.pkl"
@@ -60,7 +65,9 @@ def recommendation_text(prediction: str, pass_probability: float) -> str:
 def load_artifacts() -> tuple[Any, dict[str, Any]]:
     """Load the trained model and metadata from disk."""
     if not MODEL_PATH.exists():
-        raise FileNotFoundError("Model not found. Run `python -m src.train` before predicting.")
+        raise FileNotFoundError(
+            "Model not found. Run `python backend/models/train.py` before predicting."
+        )
 
     model = joblib.load(MODEL_PATH)
     metadata = joblib.load(METADATA_PATH) if METADATA_PATH.exists() else {}

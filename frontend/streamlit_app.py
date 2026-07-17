@@ -14,9 +14,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.config import FIGURES_DIR, REPORTS_DIR
-from src.predict import MODEL_PATH, load_artifacts, prepare_input
-from src.predict import confidence_level, recommendation_text, risk_level
+from backend.config.config import FIGURES_DIR
+from backend.services.predict import MODEL_PATH, load_artifacts, prepare_input
+from backend.services.predict import confidence_level, recommendation_text, risk_level
 
 
 st.set_page_config(
@@ -235,7 +235,10 @@ def render_visualizations() -> None:
         if figure_path.exists():
             st.image(str(figure_path), caption=figure_name.replace("_", " ").replace(".png", "").title())
         else:
-            st.info(f"{figure_name} will appear here after running `python -m src.train`.")
+            st.info(
+                f"{figure_name} will appear here after running "
+                "`python backend/models/train.py`."
+            )
 
 
 def create_prediction_download(result: dict[str, Any], record: dict[str, Any]) -> bytes:
@@ -265,7 +268,10 @@ st.markdown(
 )
 
 if not MODEL_PATH.exists():
-    st.error("Trained model not found. Run `python -m src.train` before opening the dashboard.")
+    st.error(
+        "Trained model not found. Run `python backend/models/train.py` "
+        "before opening the dashboard."
+    )
     st.stop()
 
 model, metadata = cached_artifacts()

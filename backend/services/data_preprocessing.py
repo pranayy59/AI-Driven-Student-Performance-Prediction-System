@@ -10,7 +10,13 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from src.config import DATA_FILES, GRADE_COLUMN, PASSING_GRADE, RAW_DATA_DIR, TARGET_COLUMN
+from backend.config.config import (
+    DATA_FILES,
+    GRADE_COLUMN,
+    PASSING_GRADE,
+    RAW_DATA_DIR,
+    TARGET_COLUMN,
+)
 
 
 def load_student_data(raw_dir: Path = RAW_DATA_DIR) -> pd.DataFrame:
