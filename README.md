@@ -106,11 +106,8 @@ AI-Driven Student Performance Prediction System/
 |   |-- Project_Report.md
 |   `-- README.md
 |-- sample_data/
-|-- screenshots/
+|-- assets/
 |-- .gitignore
-|-- CHANGELOG.md
-|-- CODE_OF_CONDUCT.md
-|-- CONTRIBUTING.md
 |-- LICENSE
 |-- README.md
 `-- requirements.txt
@@ -222,18 +219,6 @@ The training pipeline reports:
 - Recall
 - F1 Score
 - ROC-AUC
-
-## Screenshots
-
-Add generated screenshots to `screenshots/` after running the dashboard.
-
-Recommended screenshots:
-
-- Prediction dashboard
-- Model information page
-- Visualization page
-- Confusion matrix
-- ROC curve
 
 ## Results
 
