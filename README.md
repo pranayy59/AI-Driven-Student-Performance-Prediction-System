@@ -196,8 +196,8 @@ The dashboard includes:
 - Visualization viewer
 
 ## Dashboard
-- <img width="1901" height="976" alt="Screenshot 2026-07-17 110832" src="https://github.com/user-attachments/assets/43eb4e98-488e-4b51-b947-3ef6aa4f8e1d" />
 <img width="1911" height="977" alt="Screenshot 2026-07-17 110809" src="https://github.com/user-attachments/assets/199f54fa-4d95-4c28-973d-359bec79d8f6" />
+<img width="1901" height="976" alt="Screenshot 2026-07-17 110832" src="https://github.com/user-attachments/assets/43eb4e98-488e-4b51-b947-3ef6aa4f8e1d" />
 
 
 ## Prediction Result
